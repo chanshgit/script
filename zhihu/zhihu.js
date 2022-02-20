@@ -28,69 +28,38 @@ html =
   html.replace(/(<\/html>)/, '') +
   `
 <style ${nonce}>
+div {
+  -webkit-line-clamp: 999 !important;
+  -webkit-line-clamp: none !important;
+}
+.OpenInAppButton.is-shown {
+    -webkit-transform:translate(-50%,50px) !important;
+    transform: translate(-50%,50px) !important;
+}
+.CommentsForOia button {
+  display: none;
+}
 </style>
 
 <script ${nonce}>
-Object.defineProperties(window.navigator, {
-    'userAgent': {
-      enumerable: true,
-      value: 'Mozilla/5.0 (Windows Phone 10)'
-    },
-    'appVersion': {
-      enumerable: true,
-      value: '5.0 (Windows Phone 10)'
-    },
-    'platform': {
-      enumerable: true,
-      value: 'Win32'
-    }
-  });
-  class FixView {
-    constructor() {
-      this.init();
-    };
-    init() {
-      this.removeDownApp();
-    }
-    removeDownApp() {
-      const style = document.querySelector('style');
-      style.innerHTML +=‘.MobileAppHeader-downloadLink { display: none !important;}’;
-    };
-   };
-  function observe({ targetNode, config = {}, callback = () => { } }) {
-    if (!targetNode) {
-      return;
-    };
+setTimeout(
+() => {
+    document.querySelector(".MobileModal-wrapper").remove()
+}
+,
+100
+)
 
-    config = Object.assign({
-      attributes: true,
-      childList: true,
-      subtree: true
-    }, config);
+setTimeout(
+() => {
+    document.querySelector("body").style.overflow = "auto"
+    document.querySelector(".Question-main").removeAttribute("class")
 
-    const observer = new MutationObserver(callback);
-    observer.observe(targetNode, config);
-  };
-  try {
-    console.log('嘿嘿嘿');
-    observe({
-      targetNode: document.documentElement,
-      config: {
-        attributes: false
-      },
-      callback(mutations, observer) {
-        //const mysearch = document.querySelector('.via-zhihu-search');
-        const menu = document.querySelector('.MobileAppHeader-actions');
-        //const zhihuSearch = document.querySelector('.MobileAppHeader-searchBox');
-        if (menu) {
-          new FixView();
-        };
-      }
-    });
-  } catch (err) {
-    console.log('知乎直接看：', err)
-  };
-})();
+    // document.querySelectorAll(".ContentItem-expandButton").forEach(item => item.click())
+}
+,
+600
+)
 </script>
 </html>
 `;
