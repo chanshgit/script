@@ -65,11 +65,7 @@ Object.defineProperties(window.navigator, {
     }
     removeDownApp() {
       const style = document.querySelector('style');
-      style.innerHTML += `
-        .MobileAppHeader-downloadLink {
-          display: none !important;
-        }
-      `;
+      style.innerHTML +=‘.MobileAppHeader-downloadLink { display: none !important;}’;
     };
    };
   function observe({ targetNode, config = {}, callback = () => { } }) {
