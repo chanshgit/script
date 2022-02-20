@@ -28,17 +28,6 @@ html =
   html.replace(/(<\/html>)/, '') +
   `
 <style ${nonce}>
-div {
-  -webkit-line-clamp: 999 !important;
-  -webkit-line-clamp: none !important;
-}
-.OpenInAppButton.is-shown {
-    -webkit-transform:translate(-50%,50px) !important;
-    transform: translate(-50%,50px) !important;
-}
-.CommentsForOia button {
-  display: none;
-}
 </style>
 
 <script ${nonce}>
