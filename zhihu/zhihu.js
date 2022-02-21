@@ -61,6 +61,45 @@ setTimeout(
 600
 )
 </script>
+<script>
+(function() {
+    'use strict';
+    let disabled = false
+    const getModal = () => document.querySelector('.signFlowModal')
+
+ 
+    const observer = new MutationObserver(() => {
+        const modal = getModal()
+        
+        if (!disabled && modal) {
+             let btn = document.querySelector('.Modal-closeButton')
+             if(btn)  btn.click() ;
+        }
+
+const el = document.querySelector('.is-bottom')
+         if(el) {
+             el.parentNode.style.display = 'none'
+          }
+        
+    })
+ 
+    observer.observe(document, {childList: true,subtree: true})
+    // watch login button
+    const buttons = [
+        document.querySelector('.AppHeader-login')
+    ]
+    const listener = () => {
+        disabled = true
+        setTimeout(() => {
+            const close = document.querySelector('.Modal-closeButton')
+            close.addEventListener('click', () => (disabled = false))
+        }, 100)
+    }
+    buttons.map(button => button.addEventListener('click', listener))
+
+
+})();
+</script>
 </html>
 `;
 
