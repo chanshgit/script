@@ -46,7 +46,7 @@ var body = {
         "list_type" : 4,
         "sub_channel_list" : null,
         "title_style_conf" : null
-      },
+      },/**
       {
         "parent_channel" : 9999,
         "extra" : {
@@ -64,7 +64,7 @@ var body = {
         "list_type" : 53,
         "sub_channel_list" : null,
         "title_style_conf" : null
-      },/**
+      },
       {
         "parent_channel" : 9999,
         "extra" : null,
@@ -186,7 +186,7 @@ var body = {
         "list_type" : 11,
         "sub_channel_list" : null,
         "title_style_conf" : null
-      },**/
+      },
       {
         "parent_channel" : 9999,
         "extra" : null,
@@ -201,7 +201,7 @@ var body = {
         "list_type" : 16,
         "sub_channel_list" : null,
         "title_style_conf" : null
-      }
+      }**/
     ],
     "default_channel" : 1
   },
