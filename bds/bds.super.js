@@ -43,7 +43,7 @@ if (obj instanceof Array) {
             if (obj[i].ad_info != null) {
                 obj.splice(i, 1);
             }
-            if (obj[i].item != null) {
+            if (obj[i] && obj[i].item != null) {
                 if (obj[i].item.video != null) {
                     obj[i].item.video.video_download.url_list = obj[i].item.origin_video_download.url_list;
                 }
@@ -53,7 +53,7 @@ if (obj instanceof Array) {
                     }
                 }
             }
-            if (obj[i].comment_info != null) {
+            if (obj[i] && obj[i].comment_info != null) {
                 if (obj[i].comment_info.video != null) {
                     obj[i].comment_info.video_download.url_list = obj[i].comment_info.video.url_list;
                 }
