@@ -2,7 +2,7 @@ var body = {
   "message" : "success",
   "data" : {
     "channel_model" : [
-      {
+    /**  {
         "parent_channel" : 9999,
         "extra" : null,
         "webview" : null,
@@ -16,7 +16,7 @@ var body = {
         "list_type" : 2,
         "sub_channel_list" : null,
         "title_style_conf" : null
-      },
+      },**/
       {
         "parent_channel" : 9999,
         "extra" : null,
