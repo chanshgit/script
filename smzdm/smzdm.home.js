@@ -9,6 +9,7 @@ for(var row of rows){
   var val = 0;
   if(row.article_interestion){
     var itst = row.article_interestion;
+    console.log(itst); 
     val = parseInt(itst.article_worthy)/(parseInt(itst.article_worthy)+parseInt(itst.article_unworthy))
   }else{
     //9.3.3版本等旧版
