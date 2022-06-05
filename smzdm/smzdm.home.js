@@ -7,8 +7,8 @@ var rows = body.data.rows;
 var newrows= [];
 for(var row of rows){
   var val = 0;
-  if(row.article_interest){
-    var itst = article_interest;
+  if(row.article_interestion){
+    var itst = article_interestion;
     val = parseInt(itst.article_worthy)/(parseInt(itst.article_worthy)+parseInt(itst.article_unworthy))
   }else{
     //9.3.3版本等旧版
