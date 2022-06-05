@@ -14,7 +14,7 @@ for(var row of rows){
     //9.3.3版本等旧版
     val = parseInt(row.article_worthy)/(parseInt(row.article_worthy)+parseInt(row.article_unworthy));
   }
-  //console.log(val); 
+  console.log(val); 
   if(val*100 > 30){
     newrows.push(row);
   }
