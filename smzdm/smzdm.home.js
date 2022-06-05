@@ -1,3 +1,7 @@
+/**
+ * ^https://homepage-api.smzdm.com/(v1/)?home url script-response-body https://raw.githubusercontent.com/chanshgit/script/main/smzdm/smzdm.home.js
+ */
+
 var body = JSON.parse($response.body);  //ToDo....
 var rows = body.data.rows;
 var newrows= [];
