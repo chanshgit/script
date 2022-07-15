@@ -15,7 +15,9 @@ for(let cell of resultList){
 
 
   //芝麻信用
-  var isGoodMan = exContent.stuffStatusTagUrl?reg.exec(exContent.stuffStatusTagUrl):true; 
+  //var isGoodMan = exContent.stuffStatusTagUrl?reg.exec(exContent.stuffStatusTagUrl):true; 
+  //since 8.0
+  var isGoodMan = exContent.fishTags.r4?reg.exec(exContent.fishTags.r4.tagList[0].data.url):true;
   if(!isGoodMan) continue;
 
   //特殊标签，如闲鱼优品等
