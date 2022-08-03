@@ -11,3 +11,5 @@ ip-cidr, 203.119.175.1/24, reject
 ip-cidr, 203.119.169.129/32, reject
 #g-acs.m.goofish.com
 ip-cidr, 59.82.14.199/32, reject
+ip-cidr, 59.82.34.166/32, reject
+ip-cidr, 59.82.34.168/32, reject
