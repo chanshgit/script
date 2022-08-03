@@ -5,5 +5,5 @@ IP-CIDR,59.82.34.166/31,REJECT
 ip-cidr, 59.82.14.199/31, reject
 #acs.m.taobao.com
 IP-CIDR,203.119.144.0/24,reject
-IP-CIDR,203.119.169.0/24,reject
+#IP-CIDR,203.119.169.0/24,reject
 IP-CIDR,203.119.175.0/24,reject
