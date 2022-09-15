@@ -80,13 +80,13 @@ if (obj instanceof Array) {
 body = JSON.stringify(body);
 body = body.replace(/id\":\"([0-9]{15,})str\"/g, 'id":$1');
 body = body.replace(/\"can_download\":false/g, '"can_download":true');
-body = body.replace(/tplv-ppx-logo/g, '0x0');
+//body = body.replace(/tplv-ppx-logo/g, '0x0');
 //处理图片新域名会验证sign的问题
 //https://p6-ppx-sign.byteimg.com/tos-cn-i-0000/3e41f19d5c454d4094a8b1c008204f0c~tplv-f3gpralwbh-c5-v1:200:200:q80.jpeg?x-expires=1694308910&x-signature=MedZ0aEA%2FXgxRWVx0FpGshVm5ag%3D 
 //使用以前的请求方式
 //https://p6-ppx.byteimg.com/tos-cn-i-0000/3e41f19d5c454d4094a8b1c008204f0c~0x0.jpeg
 //0x0.jpeg,表示原图(无水印)
-body = body.replace(/-sign(\.byte.+?)tplv.+?\.(jpeg|webp|image|png).+?\"/g, '$10x0.$2"');
+body = body.replace(/(-sign)?(\.[^\"]+?)tplv-(f3gpralwbh|ppx)-logo([^\}]+?)?\"/g, '$20x0.jpeg"');
 $done({
-  body,
+  body
 });
