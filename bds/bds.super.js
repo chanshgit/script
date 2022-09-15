@@ -87,6 +87,8 @@ body = body.replace(/\"can_download\":false/g, '"can_download":true');
 //https://p6-ppx.byteimg.com/tos-cn-i-0000/3e41f19d5c454d4094a8b1c008204f0c~0x0.jpeg
 //0x0.jpeg,表示原图(无水印)
 body = body.replace(/(-sign)?(\.[^\"]+?)tplv-(f3gpralwbh|ppx)-logo([^\}]+?)?\"/g, '$20x0.jpeg"');
+//处理视频封面不显示的问题(如eKpL3GAEmCPumCqbZ+7dPqrIA18=)
+body = body.replace(/(?<=x-signature=).+?(?=\")/g,(x)=>encodeURIComponent(x));
 $done({
   body
 });
