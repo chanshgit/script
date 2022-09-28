@@ -1,5 +1,5 @@
 #主页,值率40%以上
-^https://homepage-api.smzdm.com/(v1)?/home\? url script-response-body https://raw.githubusercontent.com/chanshgit/script/main/smzdm/smzdm.home.js
+^https://homepage-api.smzdm.com/(v1/)?home\? url script-response-body https://raw.githubusercontent.com/chanshgit/script/main/smzdm/smzdm.home.js
 #关注,值率60%以上(不包含"绝对值"和"降价"商品)
 ^https://(dingyue-)?api.smzdm.com/(v1|dy)/user/dingyue/articles url script-response-body https://raw.githubusercontent.com/chanshgit/script/main/smzdm/smzdm.dy.js
 #历史记录无法显示(针对ios12 9.3.3版本)
