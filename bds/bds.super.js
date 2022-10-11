@@ -44,6 +44,17 @@ if (obj instanceof Array) {
         obj.splice(i, 1);
       }
       if (obj[i] && obj[i].item != null) {
+        //推荐列表,"用户名"后显示"浏览量"和"发布时间"
+        var time = new Date().getTime() / 1000 - obj[i].item.create_time;
+        var tstr = "";
+        if (time / 60 < 60) tstr = Math.floor(time / 60) + "分钟前";
+        else if (time / (60 * 60) < 24)
+          tstr = Math.floor(time / (60 * 60)) + "小时前";
+        else if (time / (60 * 60 * 24) < 30)
+          tstr = Math.floor(time / (60 * 60 * 24)) + "天前";
+        obj[i].item.author.name =
+          obj[i].item.author.name +
+          ` ·${tstr}·${obj[i].item.stats.view_count}`;
         if (obj[i].item.video != null) {
                     obj[i].item.video.video_download.url_list = obj[i].item.origin_video_download.url_list;
         }
