@@ -25,7 +25,7 @@ body.subscriber.entitlements = {
 /**永久VIP
 *^https://api.revenuecat.com/v1/subscribers((?!offerings).)*$
 *hostname=api.revenuecat.com
-*rewrite_local:^https://api.revenuecat.com/v1/subscribers((?!offerings).)*$ url script-response-body photoclear.js
+*^https://api.revenuecat.com/v1/subscribers((?!offerings).)*$ url script-response-body https://raw.githubusercontent.com/chanshgit/script/main/other/photoclear.js
 *
 */
 var body = {
@@ -43,7 +43,7 @@ var body = {
         "ownership_type": "PURCHASED",
         "billing_issues_detected_at": null,
         "period_type": "trial",
-        "expires_date": "2023-05-08T04:19:01Z",
+        "expires_date": "2033-05-08T04:19:01Z",
         "grace_period_expires_date": null,
         "unsubscribe_detected_at": null,
         "original_purchase_date": "2022-05-05T04:19:02Z",
@@ -56,7 +56,7 @@ var body = {
         "grace_period_expires_date": null,
         "purchase_date": "2022-05-05T04:19:01Z",
         "product_identifier": "com.monocraft.photocleaner.yearly.5",
-        "expires_date": "2023-05-08T04:19:01Z"
+        "expires_date": "2033-05-08T04:19:01Z"
       }
     },
     "original_purchase_date": "2022-05-05T03:35:15Z",
