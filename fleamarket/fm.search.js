@@ -2,7 +2,7 @@ var obj = JSON.parse($response.body);
 var resultList = obj.data.resultList;
 var tempList = [];
 //芝麻信用极好图片验证规则
-var reg = new RegExp(/(neh|5KP)/g);
+var reg = new RegExp(/(0BT|5KP)/g);
 
 for(let cell of resultList){
   var exContent = cell.data.item.main.exContent;
@@ -17,7 +17,7 @@ for(let cell of resultList){
   //芝麻信用
   //var isGoodMan = exContent.stuffStatusTagUrl?reg.exec(exContent.stuffStatusTagUrl):true; 
   //since 8.0
-  var isGoodMan = exContent.fishTags.r4?reg.exec(exContent.fishTags.r4.tagList[0].data.url):true;
+  var isGoodMan = exContent.fishTags.r4?reg.exec(exContent.fishTags.r4.tagList[0].data.url):false;
   if(!isGoodMan) continue;
 
   //特殊标签，如闲鱼优品等
