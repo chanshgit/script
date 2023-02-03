@@ -1,0 +1,10 @@
+#商品页面广告
+^https://api.m.jd.com/client.action.functionId=wareBusiness url script-response-body jd.goods.js
+#dns过滤
+^https://dns.jd.com/v6 url script-response-body jd.dns.js
+#首页弹窗
+^https://api.m.jd.com/client.action\?functionId=welcomeHome url script-response-body jd.home.js
+#屏蔽升级
+^https://api.m.jd.com/openUpgrade url reject
+
+hostname=api.m.jd.com,dns.jd.com
