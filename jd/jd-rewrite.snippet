@@ -6,5 +6,9 @@
 ^https://api.m.jd.com/client.action\?functionId=welcomeHome url script-response-body https://raw.githubusercontent.com/chanshgit/script/main/jd/jd.home.js
 #屏蔽升级
 ^https://api.m.jd.com/openUpgrade url reject
+#搜索框广告
+^https://api.m.jd.com/client.action\?functionId=(uniformRecommend|hotSearchTerms|hotWords|searchBoxWord|serverConfig|basicConfig) url reject-dict
+
+^https://api.m.jd.com/client.action.functionId=getLegoWareDetailComment url response-body buyersCommentInfo.+?isShowBuyersShow response-body isShowBuyersShow
 
 hostname=api.m.jd.com,dns.jd.com
