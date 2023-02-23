@@ -4,5 +4,6 @@
 ^https://(dingyue-)?api.smzdm.com/(v1|dy)/user/dingyue/articles url script-response-body https://raw.githubusercontent.com/chanshgit/script/main/smzdm/smzdm.dy.js
 #历史记录无法显示(针对ios12 9.3.3版本)
 ^https://api.smzdm.com/v1/user/history url 307 https://app-api.smzdm.com/user/history
-
+#获取cookie
+^https:\/\/www\.smzdm\.com\/?.? url script-request-header https://raw.githubusercontent.com/chanshgit/script/main/smzdm/smzdm.cookie.js
 hostname=*.smzdm.com
