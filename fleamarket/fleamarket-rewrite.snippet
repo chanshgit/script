@@ -11,7 +11,7 @@
 
 # 屏蔽功能
 ## "搜索框"建议
-^https://acs.m.taobao.com/gw/mtop.taobao.idlemtopsearch.search.shade/ url reject
+^https://acs.m.taobao.com/gw/mtop.taobao.idlemtopsearch.search.shade url response-body {.+} {"api":"mtop.taobao.idlemtopsearch.search.shade","data":[],"ret":["SUCCESS::调用成功"],"v":"3.0"}
 ^https://acs.m.taobao.com/gw/mtop.taobao.idlemtopsearch.item.search.activate url response-body "data":.+"v": response-body "data":null,"v":
 # '首页'智能推荐
 #^https://acs.m.taobao.com/gw/mtop.taobao.wireless.home.xianyu.awesome.get url response-body "sections":\[.+"starkTracks": response-body "sections":[],"starkTracks":
