@@ -1,15 +1,17 @@
-host, zconfig.alibabausercontent.com, reject
-host, aid.m.taobao.com, reject
-host, abtest.alibaba.com, reject
-host, msgacs.m.taobao.com, reject
-ip-cidr, 117.157.21.226/32, reject
-#图片服务器
-#ip-cidr, 112.19.14.229/32, reject
-#acs.m.taobao.com
-ip-cidr, 203.119.144.1/24, reject
-ip-cidr, 203.119.175.1/24, reject
-#ip-cidr, 203.119.169.129/32, reject
 #g-acs.m.goofish.com
-ip-cidr, 59.82.14.199/32, reject
-ip-cidr, 59.82.34.166/32, reject
-ip-cidr, 59.82.34.168/32, reject
+ip-cidr,59.82.34.168/28
+ip-cidr,59.82.14.199/28
+
+#acs.m.taobao.com
+ip-cidr,59.82.120.0/24
+ip-cidr,59.82.122.0/24
+
+#amdc.m.taobao.com,DNS请求
+host,amdc.m.taobao.com,reject
+#ip-cidr,59.82.34.0/24
+#ip-cidr,59.82.14.0/24
+#ip-cidr,59.82.113.0/24
+#ip-cidr,59.82.9.0/24
+
+#zconfig.alibabausercontent.com,用户配置
+ip-cidr,117.174.129.102/28
