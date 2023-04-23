@@ -1,0 +1,32 @@
+host, msgacs.m.taobao.com, direct
+host, acs.m.goofish.com, direct
+
+#g-acs.m.goofish.com
+ip-cidr, 59.82.34.168/29, reject
+ip-cidr, 59.82.14.199/29, reject
+
+#acs.m.taobao.com
+ip-cidr, 59.82.112.0/24, reject
+#59.82.120.227/58/203/209
+ip-cidr, 59.82.120.0/24, reject
+#59.82.121.83/217
+ip-cidr, 59.82.121.0/24, reject
+#59.82.122.91/112/203/161/33
+ip-cidr, 59.82.122.0/24, reject
+
+#acs.m.goofish.com
+ip-cidr, 59.82.58.67/28, reject
+ip-cidr, 59.82.66.200/28, reject
+ip-cidr, 59.82.84.190/28, reject
+ip-cidr, 203.119.146.27/28, reject
+
+
+#amdc.m.taobao.com,DNS
+#host, amdc.m.taobao.com, reject
+#ip-cidr,59.82.34.0/24,reject
+#ip-cidr,59.82.14.0/24,reject
+#ip-cidr,59.82.113.0/24,reject
+#ip-cidr,59.82.9.0/24,reject
+
+#zconfig.alibabausercontent.com
+#ip-cidr, 117.174.129.102/28, reject
