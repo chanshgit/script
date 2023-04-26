@@ -26,7 +26,7 @@ body.webViewFloorList = [];
 */
 var myfloors = [7046,7271,9421,10195,10352,10606];
 body.floorList = body.floorList.filter(floor => {
-  console.log(`floor.showName:${floor.showName}`);
+  //console.log(`floor.showName:${floor.showName}`);
   return myfloors.indexOf(floor.floorId) > -1;
 });
 body = JSON.stringify(body);

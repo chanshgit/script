@@ -12,7 +12,7 @@ body.floors = body.floors.filter((flr)=>{
     if(flr.mId=="bpMasterdata"){//屏蔽店铺介绍
         flr.data.shopInfo={};
     }
-    console.log(`floors.mid:${flr.mId}:${noList.indexOf(flr.mId) == -1}`);
+    //console.log(`floors.mid:${flr.mId}:${noList.indexOf(flr.mId) == -1}`);
     return noList.indexOf(flr.mId) == -1;
 });
 body = JSON.stringify(body);
