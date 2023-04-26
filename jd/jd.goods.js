@@ -1,25 +1,19 @@
 var body = JSON.parse($response.body); 
 /**
-0 = "bpMainImage:true";
-    1 = "bpCommonBanner:true";
-    2 = "bpCjxpUp:true";
-    3 = "bpName:true";
-    4 = "bpAggrePromo:true";
-    5 = "bpAddr:true";
-    6 = "bpServe:true";
-    7 = "bpEvaluate:true";
-    8 = "bpShop:false";
-    9 = "bpMasterdata:true";
-
+bpPGC > 好物测评
+bpMatchPurchase>搭配购
+bpBusSupport > 广告条
+bpShop > 店铺信息
+bpMidRecommond >
+bpRecommend > 商品推荐
 */
-var noList = ["bpPGC","bpShop","bpRelRecom","bpMidRelRecom","bpServe"];
-var vlog=[];
+var noList = ["bpPGC","bpMatchPurchase","bpBusSupport","bpShop","bpRecommend","bpMidRecommond","bpRelRecom","bpMidRelRecom"];
 body.floors = body.floors.filter((flr)=>{
- 
-var flag = noList.indexOf(flr.mId) == -1;
-vlog.push(`${flr.mId}:${flag}`);
-return flag;
+    if(flr.mId=="bpMasterdata"){//屏蔽店铺介绍
+        flr.data.shopInfo={};
+    }
+    console.log(`floors.mid:${flr.mId}:${noList.indexOf(flr.mId) == -1}`);
+    return noList.indexOf(flr.mId) == -1;
 });
-console.log(vlog); 
 body = JSON.stringify(body);
 $done({body}); 
