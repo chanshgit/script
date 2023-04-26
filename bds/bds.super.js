@@ -54,7 +54,7 @@ if (obj instanceof Array) {
           tstr = Math.floor(time / (60 * 60 * 24)) + "天前";
         obj[i].item.author.name =
           obj[i].item.author.name +
-          ` ·${tstr}·${obj[i].item.stats.view_count}`;
+          ` ·${tstr}·${obj[i].item.stats.play_count?obj[i].item.stats.play_count:obj[i].item.stats.view_count}`;
         if (obj[i].item.video != null) {
                     obj[i].item.video.video_download.url_list = obj[i].item.origin_video_download.url_list;
         }
