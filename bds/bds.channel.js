@@ -33,6 +33,42 @@ var body = {
         "title_style_conf" : null
       },
       {
+        "color_conf" : {
+          "tab_normal_color" : "#FFFFFF",
+          "channel_background_color" : "#210B08",
+          "tab_select_color" : "#FFFFFF"
+        },
+        "parent_channel" : 9999,
+        "event_name" : "guess_god_comment",
+        "list_type" : 60,
+        "is_immersive" : false,
+        "webview" : {
+          "url" : "https:\/\/api.pipix.com\/fe\/activity\/comment-guessing\/main",
+          "preload" : true,
+          "is_full" : true
+        },
+        "list_name" : "猜神评",
+        "list_view_type" : 1,
+        "title_style_conf" : {
+          "title_img" : {
+            "is_gif" : false,
+            "url_list" : [
+              {
+                "url" : "http:\/\/p3-ppx-report.byteimg.com\/tos-cn-i-abdh8li1ln\/guess_god_comment.png~tplv-abdh8li1ln-image.image"
+              }
+            ],
+            "width" : 327,
+            "height" : 111,
+            "uri" : "http:\/\/p3-ppx-report.byteimg.com\/tos-cn-i-abdh8li1ln\/guess_god_comment.png~tplv-abdh8li1ln-image.image"
+          },
+          "unselect_style" : 3,
+          "icon_url" : "",
+          "select_style" : 3,
+          "text" : "猜神评"
+        },
+        "url" : "https:\/\/api.pipix.com\/fe\/activity\/comment-guessing\/main"
+      },
+      {
         "parent_channel" : 9999,
         "extra" : null,
         "webview" : null,
