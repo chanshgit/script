@@ -24,8 +24,8 @@ body.webViewFloorList = [];
 10605>百亿补贴
 10606>搜索框
 */
-var myfloors = [7046,7271,9421,10195,10352,10606];
-body.floorList = body.floorList.filter(floor => {
+var myfloors = [7046, 7271, 9421, 10195, 10352, 10606];
+body.floorList = body.floorList.filter((floor) => {
   //console.log(`floor.showName:${floor.showName}`);
   return myfloors.indexOf(floor.floorId) > -1;
 });
