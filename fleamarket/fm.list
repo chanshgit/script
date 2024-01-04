@@ -3,6 +3,8 @@ host, acs.m.goofish.com, direct
 
 #淘宝聊天
 host, im.alimebot.taobao.com, direct
+host, ai.alimebot.taobao.com, direct
+host, alimelog.taobao.com, direct
 
 #g-acs.m.goofish.com
 ip-cidr, 59.82.34.168/28, reject
