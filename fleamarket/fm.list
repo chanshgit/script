@@ -6,6 +6,9 @@ host, im.alimebot.taobao.com, direct
 host, ai.alimebot.taobao.com, direct
 host, alimelog.taobao.com, direct
 
+#闲鱼聊天，上传图片
+host, arup.m.taobao.com, direct
+
 #g-acs.m.goofish.com
 ip-cidr, 59.82.34.168/28, reject
 ip-cidr, 59.82.14.199/28, reject
@@ -37,6 +40,7 @@ ip-cidr, 203.119.146.27/28, reject
 #ip-cidr, 117.174.129.102/28, reject
 
 #market.m.taobao.com 淘宝HD强制更新弹窗
+host, market.m.taobao.com, reject
 ip-cidr, 36.170.92.207/29, reject
 ip-cidr, 117.177.134.199/29, reject
 
