@@ -40,8 +40,11 @@ ip-cidr, 203.119.146.27/28, reject
 #ip-cidr, 117.174.129.102/28, reject
 
 #market.m.taobao.com 淘宝HD强制更新弹窗
-host, market.m.taobao.com, reject
-ip-cidr, 36.170.92.207/29, reject
-ip-cidr, 117.177.134.199/29, reject
+#host, market.m.taobao.com, reject
+ip-cidr, 36.170.92.207/32, reject
+ip-cidr, 36.170.92.208/32, reject
+ip-cidr, 117.177.134.199/32, reject
+ip-cidr, 117.177.134.200/32, reject
+
 
 
