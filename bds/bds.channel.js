@@ -31,7 +31,7 @@ var body = {
         "list_type" : 1,
         "sub_channel_list" : null,
         "title_style_conf" : null
-      },
+      },/**
       {
         "color_conf" : {
           "tab_normal_color" : "#FFFFFF",
@@ -67,7 +67,7 @@ var body = {
           "text" : "猜神评"
         },
         "url" : "https:\/\/api.pipix.com\/fe\/activity\/comment-guessing\/main"
-      },
+      },*/
       {
         "parent_channel" : 9999,
         "extra" : null,
@@ -82,7 +82,16 @@ var body = {
         "list_type" : 4,
         "sub_channel_list" : null,
         "title_style_conf" : null
-      },/**
+      },
+      {
+        "list_type": 58,
+        "list_name": "鉴神",
+        "event_name": "god_review",
+        "list_view_type": 0,
+        "url": "",
+        "is_immersive": false,
+        "parent_channel": 9999
+    },/**
       {
         "parent_channel" : 9999,
         "extra" : {
