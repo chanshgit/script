@@ -1,13 +1,10 @@
-host, msgacs.m.taobao.com, direct
-host, acs.m.goofish.com, direct
+#market.m.taobao.com 淘宝HD强制更新弹窗
+host, market.m.taobao.com, reject
 
-#淘宝聊天
-host, im.alimebot.taobao.com, direct
-host, ai.alimebot.taobao.com, direct
-host, alimelog.taobao.com, direct
-
-#闲鱼聊天，上传图片
-host, arup.m.taobao.com, direct
+host-suffix, taobao.com, direct
+host-suffix, goofish.com, direct
+host-suffix, tmall.com, direct
+host-suffix, alibaba.com, direct
 
 #g-acs.m.goofish.com
 ip-cidr, 59.82.34.168/28, reject
@@ -40,7 +37,6 @@ ip-cidr, 203.119.146.27/28, reject
 #ip-cidr, 117.174.129.102/28, reject
 
 #market.m.taobao.com 淘宝HD强制更新弹窗
-#host, market.m.taobao.com, reject
 ip-cidr, 36.170.92.207/32, reject
 ip-cidr, 36.170.92.208/32, reject
 ip-cidr, 117.177.134.199/32, reject
