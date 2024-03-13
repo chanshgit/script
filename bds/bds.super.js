@@ -16,11 +16,13 @@ Detail: /cell/detail
 用户feed: /user/cell_userfeed
 用户发帖: /user/publish_list
 用户主题：/item/cell_comment
-
-
-
 **************************/
-
+//主页内容
+const isStream = $request.url.indexOf('stream') > -1;
+//版本1.4.6
+const v_146=$request.url.indexOf('1.4.6') > -1;
+const rate = 0.6;
+console.log(isStream);
 var body = $response.body.replace(/id\":([0-9]{15,})/g, 'id":"$1str"');
 body = JSON.parse(body);
 
@@ -39,22 +41,33 @@ if (body.data.data) {
 
 if (obj instanceof Array) {
   if (obj != null) {
-    for (var i in obj) {
+    for (var i=0;i<obj.length;i++) {
+      
       if (obj[i].ad_info != null) {
-        obj.splice(i, 1);
+        obj.splice(i--, 1);
+        continue;
       }
       if (obj[i] && obj[i].item != null) {
-        //推荐列表,"用户名"后显示"浏览量"和"发布时间"
-        var time = new Date().getTime() / 1000 - obj[i].item.create_time;
+        if(isStream) {
+          //推荐列表,"用户名"后显示"浏览量"和"发布时间"
+        var time = new Date().getTime() / 1000 - obj[i].item.create_time;        
         var tstr = "";
         if (time / 60 < 60) tstr = Math.floor(time / 60) + "分钟前";
         else if (time / (60 * 60) < 24)
           tstr = Math.floor(time / (60 * 60)) + "小时前";
         else if (time / (60 * 60 * 24) < 30)
           tstr = Math.floor(time / (60 * 60 * 24)) + "天前";
-        obj[i].item.author.name =
-          obj[i].item.author.name +
-          ` ·${tstr}·${obj[i].item.stats.play_count?obj[i].item.stats.play_count:obj[i].item.stats.view_count}`;
+
+        //浏览量
+        var viewCount = obj[i].item.stats.play_count?obj[i].item.stats.play_count:obj[i].item.stats.view_count;
+        obj[i].item.author.name = obj[i].item.author.name + ` ·${tstr}·${viewCount}`;
+        //console.log(`时间:${tstr},viewCount:${viewCount}`);
+        //按时间过虑内容
+        if(viewCount < 100000 && viewCount/1000/(time / (60 * 60))<rate && time > 3*60*60){
+          obj.splice(i--,1);
+          continue;
+        }
+        }
         if (obj[i].item.video != null) {
                     obj[i].item.video.video_download.url_list = obj[i].item.origin_video_download.url_list;
         }
@@ -102,7 +115,8 @@ body = body.replace(/\"can_download\":false/g, '"can_download":true');
 body = body.replace(/"url_list":(\[\{[^\]]*\}\]),"is_gif":false,"download_list":\[\{[^\]]*\}\]/g,(x,y)=>`"url_list":${y},"is_gif":false,"download_list":${y}`);
 //body = body.replace(/"url_list":(\[\{[^\]]*\}\]),"is_gif":false,"download_list":\[\{[^\]]*\}\]/g,(x,y)=>{console.log(`x:${x},y:${y}`);return x;});
 //处理视频封面不显示的问题(如eKpL3GAEmCPumCqbZ+7dPqrIA18=)
-body = body.replace(/x-signature=(.+?)(?=(\\)?\")/g,(x,y)=>'x-signature='+encodeURIComponent(y));
+if(v_146)
+  body = body.replace(/x-signature=(.+?)(?=(\\)?\")/g,(x,y)=>'x-signature='+encodeURIComponent(y));
 $done({
   body
 });
