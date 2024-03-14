@@ -11,7 +11,9 @@ for (var row of rows) {
   if(row.article_list){
     for(let i=0;i<row.article_list.length;i++){
       const ar = row.article_list[i];
-      val = parseInt(ar.article_worthy) / (parseInt(ar.article_worthy) + parseInt(ar.article_unworthy));
+      const total = parseInt(ar.article_worthy) + parseInt(ar.article_unworthy);
+      val = total==0?0:parseInt(ar.article_worthy) / total;
+      //console.log(ar.article_title+", "+val)
       if(val * 100 < MY_WORTHY){
         row.article_list.splice(i--,1);
       }
@@ -22,14 +24,12 @@ for (var row of rows) {
   }else if (row.article_interaction) {
     var itst = row.article_interaction;
     // console.log(itst);
-    val =
-      parseInt(itst.article_worthy) /
-      (parseInt(itst.article_worthy) + parseInt(itst.article_unworthy));
+    const total = parseInt(itst.article_worthy) + parseInt(itst.article_unworthy);
+      val = total==0?0:parseInt(itst.article_worthy) / total;
   } else if(row.article_worthy) {
     //9.3.3版本等旧版
-    val =
-      parseInt(row.article_worthy) /
-      (parseInt(row.article_worthy) + parseInt(row.article_unworthy));
+    const total = parseInt(row.article_worthy) + parseInt(row.article_unworthy);
+    val = total==0?0:parseInt(row.article_worthy) / total;
   }
   
   if (reg.exec(row.dingyue_source) || val * 100 > MY_WORTHY) {
