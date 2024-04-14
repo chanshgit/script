@@ -63,7 +63,7 @@ if (obj instanceof Array) {
         obj[i].item.author.name = obj[i].item.author.name + ` ·${tstr}·${viewCount}`;
         //console.log(`时间:${tstr},viewCount:${viewCount}`);
         //按时间过虑内容
-        if(viewCount < 100000 && viewCount/1000/(time / (60 * 60))<rate && time > 3*60*60){
+        if(viewCount < 100000 && viewCount/1000/(time / (60 * 60))<rate && time > 2*60*60){
           obj.splice(i--,1);
           continue;
         }
