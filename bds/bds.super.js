@@ -22,7 +22,6 @@ const isStream = $request.url.indexOf('stream') > -1;
 //版本1.4.6
 const v_146=$request.url.indexOf('1.4.6') > -1;
 const rate = 0.6;
-console.log(isStream);
 var body = $response.body.replace(/id\":([0-9]{15,})/g, 'id":"$1str"');
 body = JSON.parse(body);
 
