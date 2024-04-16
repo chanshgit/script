@@ -2,7 +2,7 @@ const $ = new Env("皮皮虾删除点赞数低的评论");
 let url = $request.url;
 url = url.replace(/user\/cell_comment/,"comment/delete").replace(/1467&.+?&mas/,"1467&mas");
 const headers = $request.headers;
-
+const containTitle = ["什么电","#"];
 const body = JSON.parse($response.body);
 const data = body.data.cell_comments;
 data.forEach((item) => {
@@ -10,8 +10,9 @@ data.forEach((item) => {
   if (!comment) return;
   const likeCount = comment.like_count;
   const text = comment.text;
+  const contains = containTitle.some(item=>text.indexOf(item) != -1 );
   const hours = Math.round((new Date().getTime() / 1000 - comment.create_time) / (60 * 60));
-  if (likeCount < 6 && hours > 6 && text.indexOf("什么电") === -1) {
+  if (likeCount < 6 && hours > 6 && !contains) {
     console.log(`\n📝:"${text},\r\n点赞👍:${likeCount}",时间:${hours}小时前\n`);
     $.post(
       {
