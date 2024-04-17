@@ -19,24 +19,20 @@ Detail: /cell/detail
 **************************/
 //主页内容
 const isStream = $request.url.indexOf('stream') > -1;
+//收藏页
+const isFavorite = $request.url.indexOf('favorite') > -1;
 //版本1.4.6
 const v_146=$request.url.indexOf('1.4.6') > -1;
 const rate = 0.6;
+const ntime = new Date().getTime() / 1000;
 var body = $response.body.replace(/id\":([0-9]{15,})/g, 'id":"$1str"');
 body = JSON.parse(body);
 
 if (body.data.data && body.data.data[0] && body.data.data[0].block_info) {
   body.data.data = body.data.data[0].block_info.cell_list;
 }
-if (body.data.data) {
-  obj = body.data.data;
-} else if (body.data.replies) {
-  obj = body.data.replies;
-} else if (body.data.cell_comments) {
-  obj = body.data.cell_comments;
-} else {
-  obj = null;
-}
+
+let obj = body.data.data || body.data.replies || body.data.cell_comments;
 
 if (obj instanceof Array) {
   if (obj != null) {
@@ -47,9 +43,13 @@ if (obj instanceof Array) {
         continue;
       }
       if (obj[i] && obj[i].item != null) {
+        //收藏页分享链接重置
+        if(isFavorite){
+          obj[i].item.share.share_url = obj[i].item.share.schema;
+        }
         if(isStream) {
           //推荐列表,"用户名"后显示"浏览量"和"发布时间"
-        var time = new Date().getTime() / 1000 - obj[i].item.create_time;        
+        var time = ntime - obj[i].item.create_time;        
         var tstr = "";
         if (time / 60 < 60) tstr = Math.floor(time / 60) + "分钟前";
         else if (time / (60 * 60) < 24)
@@ -103,16 +103,8 @@ if (obj instanceof Array) {
 body = JSON.stringify(body);
 body = body.replace(/id\":\"([0-9]{15,})str\"/g, 'id":$1');
 body = body.replace(/\"can_download\":false/g, '"can_download":true');
-//body = body.replace(/tplv-ppx-logo/g, '0x0');
-//处理图片新域名会验证sign的问题
-//https://p6-ppx-sign.byteimg.com/tos-cn-i-0000/3e41f19d5c454d4094a8b1c008204f0c~tplv-f3gpralwbh-c5-v1:200:200:q80.jpeg?x-expires=1694308910&x-signature=MedZ0aEA%2FXgxRWVx0FpGshVm5ag%3D 
-//使用以前的请求方式
-//https://p6-ppx.byteimg.com/tos-cn-i-0000/3e41f19d5c454d4094a8b1c008204f0c~0x0.jpeg
-//0x0.jpeg,表示原图(无水印)失效！
-//body = body.replace(/(-sign)?(\.[^\"]+?)tplv-(f3gpralwbh|ppx)-logo([^\}]+?)?\"/g, '$20x0.jpeg"');
 //20230514更新,url_list替换download_list
 body = body.replace(/"url_list":(\[\{[^\]]*\}\]),"is_gif":false,"download_list":\[\{[^\]]*\}\]/g,(x,y)=>`"url_list":${y},"is_gif":false,"download_list":${y}`);
-//body = body.replace(/"url_list":(\[\{[^\]]*\}\]),"is_gif":false,"download_list":\[\{[^\]]*\}\]/g,(x,y)=>{console.log(`x:${x},y:${y}`);return x;});
 //处理视频封面不显示的问题(如eKpL3GAEmCPumCqbZ+7dPqrIA18=)
 if(v_146)
   body = body.replace(/x-signature=(.+?)(?=(\\)?\")/g,(x,y)=>'x-signature='+encodeURIComponent(y));
