@@ -1,7 +1,4 @@
-var body = $response.body;
-var obj = JSON.parse(body);
-obj.data.user_verified = true;
-obj.data.mobile = '01234567890';
-body = JSON.stringify(obj);
-//console.log(body);
-$done({body})
+let body = JSON.parse($response.body);
+body.data.user_verified = !0;
+body.data.mobile = "1234567890";
+$done({body: JSON.stringify(body)});
