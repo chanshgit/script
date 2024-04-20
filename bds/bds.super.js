@@ -69,7 +69,6 @@ if (obj instanceof Array) {
         }
         if (obj[i].item.video != null) {
                     obj[i].item.video.video_download.url_list = obj[i].item.origin_video_download.url_list;
-                    obj[i].item.video.video_high.url_list = obj[i].item.origin_video_download.url_list;
         }
         for (var j in obj[i].item.comments) {
           if (obj[i].item.comments[j].video != null) {
@@ -80,6 +79,9 @@ if (obj instanceof Array) {
       if (obj[i] && obj[i].comment_info != null) {
         if (obj[i].comment_info.video != null) {
                     obj[i].comment_info.video_download.url_list = obj[i].comment_info.video.url_list;
+        }
+        if(obj[i].comment_info.item && obj[i].comment_info.item.video){
+          obj[i].comment_info.item.video.video_download.url_list = obj[i].comment_info.item.video.video_high.url_list;
         }
       }
     }
