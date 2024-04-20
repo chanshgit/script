@@ -69,6 +69,7 @@ if (obj instanceof Array) {
         }
         if (obj[i].item.video != null) {
                     obj[i].item.video.video_download.url_list = obj[i].item.origin_video_download.url_list;
+                    obj[i].item.video.video_hight.url_list = obj[i].item.origin_video_download.url_list;
         }
         for (var j in obj[i].item.comments) {
           if (obj[i].item.comments[j].video != null) {
