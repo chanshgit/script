@@ -1,5 +1,6 @@
 var obj = JSON.parse($response.body);
 const ban_list = $prefs.valueForKey('ban_list');
+const tmp1 = obj.data.resultList[0];
 obj.data.resultList = obj.data.resultList.filter((result) => {
   var exContent = result.data.item.main.exContent;
   //屏蔽大家搜
@@ -11,6 +12,13 @@ obj.data.resultList = obj.data.resultList.filter((result) => {
   //信用极好标识
   return exContent.fishTags.r4 && /(0BT|5KP)/.test(exContent.fishTags.r4.tagList[0].data.url);
 });
+if (obj.data.resultInfo.trackParams.page === "1") {
+  let len = obj.data.resultList.length;
+  while (len < 3 && len > 0) {
+    obj.data.resultList.push(tmp1);
+    len++;
+  }
+}
 //屏蔽选项卡多余项
 obj.data.tabList=[obj.data.tabList[0]];
 
