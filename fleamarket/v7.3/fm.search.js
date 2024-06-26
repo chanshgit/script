@@ -1,6 +1,6 @@
 var obj = JSON.parse($response.body);
 const ban_list = $prefs.valueForKey('ban_list');
-const tmp1 = obj.data.resultList[0];
+const tmp1 = obj.data.resultList && obj.data.resultList[0];
 obj.data.resultList = obj.data.resultList.filter((result) => {
   var exContent = result.data.item.main.exContent;
   //屏蔽大家搜
