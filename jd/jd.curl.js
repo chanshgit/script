@@ -40,8 +40,12 @@ const opts = {
             discountInfo = `满${quota}打${discount*10}折`;
         }else
             discountInfo = `满${quota}减${discount}`;
-        console.log(`京东优惠券--${discountInfo}(${limitStr}) ${couponUrl}`);
-        $notify("京东优惠券",`${discountInfo}(${limitStr})`,couponUrl,{"open-url":couponUrl});
+        let retInfo = `${discountInfo}(${limitStr}) ${couponUrl}`;
+        console.log("京东优惠券--"+retInfo);
+        retInfo = formatTime(new Date(),"yyyy/MM/dd hh:mm:ss")+":  "+retInfo;
+        retInfo = encodeURIComponent(retInfo);
+        const openUrl="shortcuts://run-shortcut?name=jd-coupon&input="+retInfo;
+        $notify("京东优惠券",`${discountInfo}(${limitStr})`,couponUrl,{"open-url":openUrl});
     }
 })().catch(e=>{
     console.log(e);
@@ -49,3 +53,16 @@ const opts = {
     $done();
 })
 
+
+function formatTime(date, format) {
+  const map = {
+    'yyyy': date.getFullYear(),
+    'MM': String(date.getMonth() + 1).padStart(2, '0'),
+    'dd': String(date.getDate()).padStart(2, '0'),
+    'hh': String(date.getHours()).padStart(2, '0'),
+    'mm': String(date.getMinutes()).padStart(2, '0'),
+    'ss': String(date.getSeconds()).padStart(2, '0')
+  };
+  
+  return format.replace(/yyyy|MM|dd|hh|mm|ss/g, match => map[match]);
+}
