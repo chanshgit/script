@@ -6,7 +6,9 @@ obj.data.resultList = obj.data.resultList.filter((result) => {
   //屏蔽大家搜
   if(Object.keys(exContent).length < 20) return false;
   //屏蔽淘宝广告
-  if(exContent.isAliMaMaAD == "true") return false;
+  if(exContent.isAliMaMaAD === "true") return false;
+  //屏蔽"严选"
+  if(/严选/.test(exContent.userIdentityShow)) return false;
   //屏蔽黑名单
   if(ban_list && ban_list.indexOf(result.data.item.main.clickParam.args.seller_id) != -1) return false;
   

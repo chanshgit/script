@@ -9,7 +9,7 @@ obj.data.sections = obj.data.sections.filter((section) => {
         section.data.targetUrl = section.data.targetUrl.replace("home_mini_detail","awesome_detail");
     var fishTags =section.data.fishTags;
     //筛选信用极好
-    return fishTags && fishTags.r4 && /信用极好/.test(fishTags.r4.tagList[0].data.content);
+    return fishTags && fishTags.r4 && fishTags.r4.tagList[0] && /信用极好/.test(fishTags.r4.tagList[0].data.content);
 });
 //返回结果的个数
 obj.data.feedsCount = obj.data.sections.length;
