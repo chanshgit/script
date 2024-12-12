@@ -7,8 +7,8 @@ obj.data.resultList = obj.data.resultList.filter((result) => {
   if(Object.keys(exContent).length < 20) return false;
   //屏蔽淘宝广告
   if(exContent.isAliMaMaAD === "true") return false;
-  //屏蔽"严选"
-  if(/严选/.test(exContent.userIdentityShow)) return false;
+  //屏蔽"严选" userIdentityShow可能为""
+if(/严选/.test(exContent.userIdentityShow) || /严选/.test(exContent.userNickName)) return false;
   //屏蔽黑名单
   if(ban_list && ban_list.indexOf(result.data.item.main.clickParam.args.seller_id) != -1) return false;
   
