@@ -44,9 +44,10 @@ if (obj instanceof Array) {
       }
       if (obj[i] && obj[i].item != null) {
         //收藏页分享链接重置
-        if(isFavorite){
-          obj[i].item.share.share_url = obj[i].item.share.schema;
-        }
+        //if(isFavorite){
+        //  obj[i].item.share.share_url = obj[i].item.share.schema;
+        //}
+        obj[i].item.share.share_url = obj[i].item.share.share_url.replace(/\?.*$/,'');
         if(isStream) {
           //推荐列表,"用户名"后显示"浏览量"和"发布时间"
         var time = ntime - obj[i].item.create_time;        
