@@ -1,0 +1,11 @@
+[Rewrite]
+#房子详页定制
+^https://apphouse.58.com/(api|unify)/detail/(zufang|hezu)/(\d+) url script-response-body 58.detail.js
+^https://houserentapp.58.com/landlord/api_broker_info_new url script-response-body 58.other.js
+^https://appsale.58.com/userbroker/broker/info url script-response-body 58.other.js
+^https://houserentapp.58.com/favorite url script-response-body 58.other.js
+^https://rentercenter.58.com/report/detail_app_v2 url script-request-header 58.other.js
+^https://apphouse.58.com/api/list url script-response-body 58.do.js
+
+[mitm]
+hostname=apphouse.58.com,houserentapp.58.com,ditu.58.com,appsale.58.com
