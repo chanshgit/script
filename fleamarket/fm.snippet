@@ -1,0 +1,63 @@
+[filter]
+host-suffix, taobao.com, direct
+host-suffix, goofish.com, direct
+host-suffix, tmall.com, direct
+host-suffix, alibaba.com, direct
+host-suffix, dingtalk.com, direct
+
+#img.alicdn.com 无水印获取图片链接
+#ip-cidr, 117.177.71.14/24, reject
+#g-acs.m.goofish.com
+ip-cidr, 59.82.34.168/28, reject
+ip-cidr, 59.82.14.199/28, reject
+#59.82.9.32,...241
+ip-cidr,59.82.9.0/24,reject
+
+#acs.m.taobao.com
+ip-cidr, 59.82.112.0/24, reject
+#59.82.120.227/58/203/209
+ip-cidr, 59.82.120.0/24, reject
+#59.82.121.83/217
+ip-cidr, 59.82.121.0/24, reject
+#59.82.122.91/112/203/161/33
+ip-cidr, 59.82.122.0/24, reject
+ip-cidr, 203.119.204.136/24,reject
+ip-cidr, 203.119.238.249/24,reject
+ip-cidr, 203.119.252.30/24,reject
+
+#acs.m.goofish.com
+ip-cidr, 59.82.58.67/28, reject
+ip-cidr, 59.82.66.200/28, reject
+ip-cidr, 59.82.84.190/28, reject
+ip-cidr, 203.119.146.27/28, reject
+ip-cidr, 59.82.113.36/32, reject
+
+[rewrite]
+#"直播"入口
+^https://acs.m.goofish.com/gw/mtop.taobao.idle.homehint.list/\d+ url reject
+#搜索框智能推荐
+^https://acs.m.goofish.com/gw/mtop.taobao.idlemtopsearch.search.shade/\d url reject
+#mtop.taobao.idle.home.whale.modulet 主页top广告
+^https://acs.m.goofish.com/gw/mtop.taobao.idle.home.whale.modulet/\d url reject
+
+#mtop.taobao.idlehome.home.tabdetail 主页tab
+#mtop.taobao.idlehome.home.nextfresh 主页推荐
+#mtop.taobao.idle.local.home 本地首页
+#mtop.taobao.idle.local.home.feeds 本地tab
+^https://(g-)?acs.m.goofish.com/gw/mtop.taobao.idle.local.home(.feeds)?/ url script-response-body fm.idle.js
+^https://acs.m.goofish.com/gw/mtop.taobao.idlehome.home.(tabdetail|nextfresh|newitem.page)/ url script-response-body fm.idle.js
+
+#搜索功能
+^https://(g-)?acs.m.goofish.com/gw/mtop.taobao.idlemtopsearch.search/\d+ url script-response-body fm.search.js
+
+#mtop.taobao.idlehome.home.tabentry 搜索页面tab标签请求
+^https://acs.m.goofish.com/gw/mtop.taobao.idlehome.home.tabentry/\d url script-response-body fm.other.js
+#^https://g-acs.m.goofish.com/gw/mtop.taobao.idle.awesome.detail.unit url script-request-body fm.other.js
+^https://acs.m.goofish.com/gw/mtop.taobao.idle.local.flow.plat.section/ url script-response-body fm.other.js
+
+#搜索框建议
+^https://acs.m.goofish.com/gw/mtop.taobao.idlemtopsearch.item.search.activate url response-body \{.+\} response-body {"api":"mtop.taobao.idlemtopsearch.item.search.activate","data":[],"ret":["SUCCESS::调用成功"],"v":"2.0"}
+^https://acs.m.goofish.com/gw/mtop.taobao.idlemtopsearch.search.discover url response-body \{.+\} response-body {"api":"","data":{},"ret":["SUCCESS::调用成功"],"v":"1.0"}
+
+[mitm]
+hostname=*.m.goofish.com
